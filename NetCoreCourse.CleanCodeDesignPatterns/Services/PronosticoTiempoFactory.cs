@@ -2,31 +2,31 @@
 
 namespace NetCoreCourse.CleanCodeDesignPatterns.Services
 {
-    public interface IWeatherForeCastFactory
+    public interface IPronosticoTiempoFactory
     {
-        Task<IWeather> Create(string cityName);
+        Task<ITiempo> Create(string cityName);
     }
 
-    public class WeatherForeCastFactory : IWeatherForeCastFactory
+    public class PronosticoTiempoFactory : IPronosticoTiempoFactory
     {
         private readonly IServiceProvider serviceProvider;
 
-        public WeatherForeCastFactory(IServiceProvider serviceProvider)
+        public PronosticoTiempoFactory(IServiceProvider serviceProvider)
         {
             this.serviceProvider = serviceProvider;
         }
 
         private readonly Dictionary<string, Type> factories = new Dictionary<string, Type>
         {
-            ["BuenosAires"] = typeof(WeatherBuenosAires),
-            ["Rosario"] = typeof(WeatherRosario)
+            ["BuenosAires"] = typeof(TiempoBuenosAires),
+            ["Rosario"] = typeof(TiempoRosario)
         };
 
-        public async Task<IWeather> Create(string cityName)
+        public async Task<ITiempo> Create(string cityName)
         {
             if (this.factories.TryGetValue(cityName, out Type weather))
             {
-                return (IWeather) this.serviceProvider.GetService(weather);
+                return (ITiempo) this.serviceProvider.GetService(weather);
             }
 
             throw new NotSupportedException(cityName);

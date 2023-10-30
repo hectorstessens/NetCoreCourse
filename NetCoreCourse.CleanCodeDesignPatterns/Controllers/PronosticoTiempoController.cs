@@ -6,26 +6,25 @@ namespace NetCoreCourse.CleanCodeDesignPatterns.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class WeatherForecastController : ControllerBase
+    public class PronosticoTiempoController : ControllerBase
     {
-        private readonly IWeatherForeCastService weatherForecastService;
+        private readonly IPronosticoTiempoService pronosticoTiempoService;
 
-        public WeatherForecastController(IWeatherForeCastService weatherForecastService)
+        public PronosticoTiempoController(IPronosticoTiempoService pronosticoTiempoService)
         {
-            this.weatherForecastService = weatherForecastService;
+            this.pronosticoTiempoService = pronosticoTiempoService;
         }
 
         private static readonly string[] Summaries = new[]
         {
         "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-    };
-
+        };
 
 
         [HttpGet("GetWeatherForecast")]
-        public IEnumerable<WeatherForecast> Get()
+        public IEnumerable<PronosticoTiempo> Get()
         {
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+            return Enumerable.Range(1, 5).Select(index => new PronosticoTiempo
             {
                 Date = DateTime.Now.AddDays(index),
                 TemperatureC = Random.Shared.Next(-20, 55),
@@ -35,10 +34,9 @@ namespace NetCoreCourse.CleanCodeDesignPatterns.Controllers
         }
 
         [HttpGet("GetWeatherForecastByCity")]
-        public async Task<WeatherForecast> GetByCity([FromQuery] string cityName)
+        public async Task<PronosticoTiempo> GetByCity([FromQuery] string cityName)
         {
-            return await weatherForecastService.GetWeatherForecast(cityName);
+            return await pronosticoTiempoService.GetPronosticoTiempoFactory(cityName);
         }
-
     }
 }

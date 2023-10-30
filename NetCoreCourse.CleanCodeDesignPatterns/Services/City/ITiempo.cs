@@ -1,7 +1,7 @@
 ﻿namespace NetCoreCourse.CleanCodeDesignPatterns.Services.City
 {
-    public interface IWeather
+    public interface ITiempo
     {
-        WeatherForecast Get();
+        PronosticoTiempo Get();
     }
 }

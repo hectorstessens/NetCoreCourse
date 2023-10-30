@@ -1,10 +1,10 @@
 ﻿namespace NetCoreCourse.CleanCodeDesignPatterns.Services.City
 {
-    public class WeatherBuenosAires : IWeather
+    public class TiempoBuenosAires : ITiempo
     {
-        public WeatherForecast Get()
+        public PronosticoTiempo Get()
         {
-            return new WeatherForecast()
+            return new PronosticoTiempo()
             {
                  Date = DateTime.Now,
                  TemperatureC = 32

@@ -9,10 +9,13 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddTransient<IWeatherForeCastService, WeatherForeCastService>();
-builder.Services.AddTransient<IWeatherForeCastFactory, WeatherForeCastFactory>();
-builder.Services.AddTransient(m => new WeatherBuenosAires());
-builder.Services.AddTransient(m => new WeatherRosario());
+builder.Services.AddTransient<IPronosticoTiempoService, PronosticoTiempoService>();
+builder.Services.AddTransient<IPronosticoTiempoFactory, PronosticoTiempoFactory>();
+builder.Services.AddTransient<ITerremotoService, TerremotoService>();
+
+
+builder.Services.AddTransient(m => new TiempoBuenosAires());
+builder.Services.AddTransient(m => new TiempoRosario());
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
