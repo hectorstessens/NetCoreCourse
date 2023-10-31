@@ -1,6 +1,6 @@
 ﻿using NetCoreCourse.CleanCodeDesignPatterns.Services.City;
 
-namespace NetCoreCourse.CleanCodeDesignPatterns.Services
+namespace NetCoreCourse.CleanCodeDesignPatterns.Services.Patterns
 {
     public interface IPronosticoTiempoFactory
     {
@@ -24,9 +24,9 @@ namespace NetCoreCourse.CleanCodeDesignPatterns.Services
 
         public async Task<ITiempo> Create(string cityName)
         {
-            if (this.factories.TryGetValue(cityName, out Type weather))
+            if (factories.TryGetValue(cityName, out Type weather))
             {
-                return (ITiempo) this.serviceProvider.GetService(weather);
+                return (ITiempo)serviceProvider.GetService(weather);
             }
 
             throw new NotSupportedException(cityName);

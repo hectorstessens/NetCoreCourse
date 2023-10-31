@@ -15,7 +15,8 @@ namespace NetCoreCourse.CleanCodeDesignPatterns.Controllers
         }
 
         [HttpGet]
-        public async Task<decimal> GetCosas([FromQuery] string cityName)
+        //Use Intention-Revealing Names
+        public async Task<double> GetCosas([FromQuery] string cityName)
         {
             return terremotoService.ObtenerEsoQueNecesito(cityName);
         }
