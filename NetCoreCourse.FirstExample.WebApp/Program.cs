@@ -87,9 +87,9 @@ if (!app.Environment.IsDevelopment())
     // El metodo anterior no es recomendado para ambientes NO productivos ya que son cacheados por los navegadores.
 }
 //Probando nuevos ambientes.
-if (app.Environment.IsEnvironment("MarcosDev"))
+if (app.Environment.IsEnvironment("Integraciones"))
 {
-    app.Logger.LogInformation("Este es el ambiente de Marcos.");
+    app.Logger.LogInformation("Este es el ambiente de Integraciones.");
 }
 
 //app.UseHttpsRedirection(); //Redirecciona cualquier request HTTP a HTTPS
