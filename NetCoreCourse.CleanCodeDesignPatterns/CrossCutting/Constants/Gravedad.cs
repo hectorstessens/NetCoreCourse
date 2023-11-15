@@ -1,6 +1,8 @@
 ﻿namespace NetCoreCourse.CleanCodeDesignPatterns.CrossCutting.Constants
 {
-    public class Gravedad
+    //singleton
+    public static class Gravedad
     {
+        public static double Valor = 9.80665;
     }
 }

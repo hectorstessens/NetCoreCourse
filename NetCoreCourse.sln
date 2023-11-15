@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetCoreCourse.MvcApp", "Net
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetCoreCourse.FirstExample.WebApp", "NetCoreCourse.FirstExample.WebApp\NetCoreCourse.FirstExample.WebApp.csproj", "{F1FB607C-EB94-49AC-B28D-55FD605A86F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetCoreCourse.CleanCodeDesignPatterns", "NetCoreCourse.CleanCodeDesignPatterns\NetCoreCourse.CleanCodeDesignPatterns.csproj", "{9597B3BF-A131-488E-BB69-D76854675757}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetCoreCourse.CleanCodeDesignPatterns", "NetCoreCourse.CleanCodeDesignPatterns\NetCoreCourse.CleanCodeDesignPatterns.csproj", "{9597B3BF-A131-488E-BB69-D76854675757}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "NetCoreCourse.Db", "NetCoreCourse.Db\NetCoreCourse.Db.sqlproj", "{2CD74FD5-B369-447C-B0E0-4455CEBA642C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,12 @@ Global
 		{9597B3BF-A131-488E-BB69-D76854675757}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9597B3BF-A131-488E-BB69-D76854675757}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9597B3BF-A131-488E-BB69-D76854675757}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2CD74FD5-B369-447C-B0E0-4455CEBA642C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CD74FD5-B369-447C-B0E0-4455CEBA642C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CD74FD5-B369-447C-B0E0-4455CEBA642C}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{2CD74FD5-B369-447C-B0E0-4455CEBA642C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CD74FD5-B369-447C-B0E0-4455CEBA642C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2CD74FD5-B369-447C-B0E0-4455CEBA642C}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
