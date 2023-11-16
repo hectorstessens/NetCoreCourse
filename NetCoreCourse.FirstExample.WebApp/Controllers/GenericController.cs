@@ -65,5 +65,20 @@ namespace NetCoreCourse.FirstExample.WebApp.Controllers
             // Probar agregando la restriccion al generic.
             return Ok(new { intSpec, charSpec, transportSpec1, transportSpec2 });
         }
+
+
+
     }
+
+    public interface IRepository<T> where T: Transport
+    {
+        void Save(T Object);
+    }
+    public class RepositoryDataBase<T> where T : Transport 
+    {
+        public void Save(T Object)
+        {
+        }
+    }
+
 }

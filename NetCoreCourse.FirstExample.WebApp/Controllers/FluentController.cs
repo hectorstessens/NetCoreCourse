@@ -10,9 +10,10 @@ namespace NetCoreCourse.FirstExample.WebApp.Controllers
         public IActionResult Hey()
         {
             FluentExample person = new FluentExample()
-     .SetFirstName("John")
-     .SetLastName("Doe")
-     .SetAge(25);
+                 .SetFirstName("John")
+                 .SetLastName("Doe")
+                 .SetAge(25)
+                 .SetProgramer("si es progrador c#");
 
             var name = person.DisplayInfo();
             return Ok(name);
@@ -24,6 +25,7 @@ namespace NetCoreCourse.FirstExample.WebApp.Controllers
         private string firstName;
         private string lastName;
         private int age;
+        private string isProgramer;
 
         public FluentExample SetFirstName(string name)
         {
@@ -43,9 +45,15 @@ namespace NetCoreCourse.FirstExample.WebApp.Controllers
             return this;
         }
 
+        public FluentExample SetProgramer(string isprogramer)
+        {
+            this.isProgramer = isprogramer;
+            return this;
+        }
+
         public string DisplayInfo()
         {
-            return $"Name: {firstName} {lastName}, Age: {age}";
+            return $"Name: {firstName} {lastName}, Age: {age}, es Programador: {isProgramer}";
         }
     }
 }
