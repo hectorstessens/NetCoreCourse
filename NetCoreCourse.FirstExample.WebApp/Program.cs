@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http.Json;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using NetCoreCourse.FirstExample.WebApp.Configuration;
+using NetCoreCourse.FirstExample.WebApp.Controllers;
 using NetCoreCourse.FirstExample.WebApp.DataAccess;
 using NetCoreCourse.FirstExample.WebApp.Dto;
 using NetCoreCourse.FirstExample.WebApp.Filters;
@@ -61,6 +62,7 @@ builder.Services.AddTransient<IServiceUsingServices, ServiceUsingServices>();
 builder.Services.AddTransient<IMinimalApiService, MinimalApiService>();
 
 builder.Services.AddTransient<ITransientRandomValueService, RandomValueService>();
+
 builder.Services.AddScoped<IScopedRandomValueService, RandomValueService>();
 builder.Services.AddSingleton<ISingletonRandomValueService, RandomValueService>();
 
@@ -105,6 +107,7 @@ app.UseAuthorization();
 
 //Definicion de "Minimal API". Mas info en: https://docs.microsoft.com/en-us/aspnet/core/fundamentals/minimal-apis?view=aspnetcore-6.0
 app.MapGet("/api/firstapi", () => "Hey here is your first API!");
+app.MapGet("/api/TestApi", () => "Hey here is your first API!");
 
 app.MapPost("/api/minimalapi", (MinimalApiRequest request, IMinimalApiService service) => {
     return service.Execute(request);

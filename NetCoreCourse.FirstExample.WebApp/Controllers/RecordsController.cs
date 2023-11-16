@@ -21,12 +21,15 @@ namespace NetCoreCourse.FirstExample.WebApp.Controllers
     [Route("api/[controller]")]
     public class RecordsController : ControllerBase
     {
+
         [HttpGet]
         public void Get()
         {
+            
+
             var ccForA = new ComplexClass(1);
             //Constructor con parametros posicionales. (Positional Parameters)
-            var a = new RecordClass("a", 10, ccForA);
+            var a = new RecordClass("a", 15, ccForA);
             var b = new RecordStruct("b", 15, new ComplexClass(1));
             var c = new RecordStructRO("c", 5, new ComplexClass(1));
 

@@ -5,7 +5,7 @@ namespace NetCoreCourse.FirstExample.WebApp.Controllers
     
     [Route("api/[controller]")] //Este decorador permite que el Middleware UseRouting pueda encontrar este endpoint.
     //Mira! Estamos heredando de ControllerBase
-    public class ExampleController : ControllerBase
+    public class MiddleWareController : ControllerBase
     {
         [HttpGet]
         public IActionResult Hey()
