@@ -15,7 +15,6 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddTransient<IPronosticoTiempoService, PronosticoTiempoService>();
 
-builder.Services.AddTransient<IPronosticoTiempoService, PronosticoTiempoService>();
 builder.Services.AddTransient<ITsunamiService, TsunamiService>();
 builder.Services.AddTransient<IJapanServiceAdapter, JapanServiceAdapter>();
 
