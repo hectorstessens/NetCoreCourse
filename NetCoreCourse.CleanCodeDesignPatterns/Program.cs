@@ -17,7 +17,10 @@ builder.Services.AddTransient<IPronosticoTiempoService, PronosticoTiempoService>
 
 builder.Services.AddTransient<IPronosticoTiempoService, PronosticoTiempoService>();
 builder.Services.AddTransient<ITsunamiService, TsunamiService>();
+builder.Services.AddTransient<IJapanServiceAdapter, JapanServiceAdapter>();
+
 builder.Services.AddTransient<ITerremotoService, TerremotoService>();
+
 builder.Services.AddTransient<IPronosticoTiempoFactory, PronosticoTiempoFactory>();
 builder.Services.AddTransient<ITsunamiProbabilityCalculatorBuilder, TsunamiProbabilityCalculatorBuilder>();
 

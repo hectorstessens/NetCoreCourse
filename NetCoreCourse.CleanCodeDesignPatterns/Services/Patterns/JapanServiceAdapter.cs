@@ -1,15 +1,22 @@
-﻿namespace NetCoreCourse.CleanCodeDesignPatterns.Services.Patterns
-{
+﻿using NetCoreCourse.CleanCodeDesignPatterns.Client;
 
-    public interface IJapanServiceAdapter 
+namespace NetCoreCourse.CleanCodeDesignPatterns.Services.Patterns
+{
+    public interface IJapanServiceAdapter
     {
-    
+        double ProbabilidadTerremoto();
     }
     public class JapanServiceAdapter : IJapanServiceAdapter
     {
-        //public decimal ProbabilidadTerremoto(int probabilidad) 
-        //{
-        
-        //}
+        public double ProbabilidadTerremoto()
+        {
+            JapanWeatherClient.Login();
+
+            JapanWeatherClient.SetParameters();
+
+            JapanWeatherClient.SetConfiguration();
+            double probability = JapanWeatherClient.GetProbability();
+            return probability;
+        }
     }
 }

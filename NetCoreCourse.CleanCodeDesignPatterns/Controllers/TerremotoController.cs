@@ -20,5 +20,11 @@ namespace NetCoreCourse.CleanCodeDesignPatterns.Controllers
         {
             return terremotoService.ObtenerEsoQueNecesito(cityName);
         }
+
+        [HttpGet("ProbabilidadTerromotoJapon")]
+        public async Task<double> GetProbabilidadTerromotoJapon() 
+        {
+            return terremotoService.GetProbabilidadTerromotoJapon();
+        }
     }
 }

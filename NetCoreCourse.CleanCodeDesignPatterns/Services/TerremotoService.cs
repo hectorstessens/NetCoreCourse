@@ -1,13 +1,22 @@
-﻿namespace NetCoreCourse.CleanCodeDesignPatterns.Services
+﻿using NetCoreCourse.CleanCodeDesignPatterns.Services.Patterns;
+
+namespace NetCoreCourse.CleanCodeDesignPatterns.Services
 {
 
 
     public interface ITerremotoService
     {
         double ObtenerEsoQueNecesito(string city);
+        double GetProbabilidadTerromotoJapon();
     }
     public class TerremotoService : ITerremotoService
     {
+        private readonly IJapanServiceAdapter japanServiceAdapter;
+        public TerremotoService(IJapanServiceAdapter japanServiceAdapter) 
+        {
+            this.japanServiceAdapter = japanServiceAdapter;
+        }
+        
         //Avoid Disinformation
         public Dictionary<string, double> ListStringDecimalCiudadesConNumeros = new Dictionary<string, double>()
         {
@@ -78,6 +87,11 @@
             }
 
             return probability;
+        }
+
+        public double GetProbabilidadTerromotoJapon()
+        {
+            return japanServiceAdapter.ProbabilidadTerremoto();
         }
     }
 }

@@ -81,8 +81,6 @@ namespace NetCoreCourse.FirstExample.WebApp.Controllers
             var fromService = serviceWithServices.GetRandomValues();
 
             return Ok(new RandomServiceResponse(fromController, fromService));
-        }
-
-        
+        }        
     }
 }
