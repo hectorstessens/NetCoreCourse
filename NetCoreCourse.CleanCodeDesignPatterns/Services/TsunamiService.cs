@@ -16,8 +16,8 @@ namespace NetCoreCourse.CleanCodeDesignPatterns.Services
             {"Rosario", new CityData(1,2,2) },
             {"Buenos Aires", new CityData(2,4,2.8) },
         };
-        private readonly ITsunamiProbabilityCalculatorBuilder tsunamiProbabilityCalculatorBuilder;
-        public TsunamiService(ITsunamiProbabilityCalculatorBuilder tsunamiProbabilityCalculatorBuilder)
+        private readonly TsunamiProbabilityCalculatorBuilder tsunamiProbabilityCalculatorBuilder;
+        public TsunamiService(TsunamiProbabilityCalculatorBuilder tsunamiProbabilityCalculatorBuilder)
         {
             this.tsunamiProbabilityCalculatorBuilder = tsunamiProbabilityCalculatorBuilder;
         }
