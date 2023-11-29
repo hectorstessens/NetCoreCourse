@@ -2,8 +2,6 @@
 
 namespace NetCoreCourse.CleanCodeDesignPatterns.Services
 {
-
-
     public interface ITerremotoService
     {
         double ObtenerEsoQueNecesito(string city);

@@ -15,7 +15,7 @@ namespace NetCoreCourse.CleanCodeDesignPatterns.Controllers
         }
 
         [HttpGet]
-        public async Task<double> GetCosas([FromQuery] string cityName)
+        public async Task<double> ObtenerProbalilidad([FromQuery] string cityName)
         {
             return tsunamiService.ObtenerProbalilidad(cityName);
         }

@@ -23,7 +23,10 @@ namespace NetCoreCourse.CleanCodeDesignPatterns.Services
             {
                 var pronosticoTiempo = await pronosticoTiempoFactory.Create(city);
 
-                return pronosticoTiempo.Get();
+                var decorator = new TemperaturaDecorator(pronosticoTiempo);
+                return decorator.Get();
+
+                //return pronosticoTiempo.Get();
             }
             catch
             {
