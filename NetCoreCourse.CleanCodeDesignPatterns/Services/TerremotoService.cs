@@ -1,22 +1,24 @@
-﻿using NetCoreCourse.CleanCodeDesignPatterns.Services.Patterns;
+﻿using System.Reflection.Metadata.Ecma335;
+
+using NetCoreCourse.CleanCodeDesignPatterns.Services.Patterns;
 
 namespace NetCoreCourse.CleanCodeDesignPatterns.Services
 {
     public interface ITerremotoService
     {
-        double ObtenerEsoQueNecesito(string city);
+        double ObtenerTemperaturaPorCiudad(string city);
         double GetProbabilidadTerromotoJapon();
     }
     public class TerremotoService : ITerremotoService
     {
         private readonly IJapanServiceAdapter japanServiceAdapter;
-        public TerremotoService(IJapanServiceAdapter japanServiceAdapter) 
+        public TerremotoService(IJapanServiceAdapter japanServiceAdapter)
         {
             this.japanServiceAdapter = japanServiceAdapter;
         }
-        
+
         //Avoid Disinformation
-        public Dictionary<string, double> ListStringDecimalCiudadesConNumeros = new Dictionary<string, double>()
+        public Dictionary<string, double> CiudadesTemperatura = new Dictionary<string, double>()
         {
             { "Rosario" , 10 },
             { "Santa Fe" , 5 },
@@ -24,11 +26,18 @@ namespace NetCoreCourse.CleanCodeDesignPatterns.Services
             { "San Juan " , 70 },
         };
 
-        public double ObtenerEsoQueNecesito(string city)
+        public double ObtenerTemperaturaPorCiudad(string city)
         {
-            return ListStringDecimalCiudadesConNumeros.GetValueOrDefault(city);
+            return CiudadesTemperatura.GetValueOrDefault(city);
+
 
             //return CalculateEarthquakeProbability(1,1,false);
+        }
+
+        public double ObtenerTemperaturaPorCiudadDataBase(string city)
+        {
+            return CiudadesTemperatura.GetValueOrDefault(city);
+
         }
 
         //Should be Small!!!
@@ -37,25 +46,25 @@ namespace NetCoreCourse.CleanCodeDesignPatterns.Services
         //Flag Arguments​
 
 
-        public double CalculateEarthquakeProbability(int currentEarthquakeCount, int locationRiskFactor, bool isEarthquakeSeason)
+        public double CalculateEarthquakeProbability(ParametersTerremoto parametersTerremoto)
         {
             double probability = 0.0;
 
-            if (currentEarthquakeCount == 0)
+            if (parametersTerremoto.currentEarthquakeCount == 0)
             {
-                if (locationRiskFactor > 5)
+                if (parametersTerremoto.locationRiskFactor > 5)
                     probability = 0.7;
                 else
                     probability = 0.5;
 
-                if (isEarthquakeSeason)
+                if (parametersTerremoto.isEarthquakeSeason)
                 {
                     probability *= 1.2;
                 }
             }
-            else if (currentEarthquakeCount == 1)
+            else if (parametersTerremoto.currentEarthquakeCount == 1)
             {
-                if (locationRiskFactor > 5)
+                if (parametersTerremoto.locationRiskFactor > 5)
                 {
                     probability = 0.8;
                 }
@@ -64,22 +73,22 @@ namespace NetCoreCourse.CleanCodeDesignPatterns.Services
                     probability = 0.6;
                 }
 
-                if (isEarthquakeSeason)
+                if (parametersTerremoto.isEarthquakeSeason)
                 {
                     probability *= 1.1;
                 }
             }
-            else if (currentEarthquakeCount == 2)
+            else if (parametersTerremoto.currentEarthquakeCount == 2)
             {
-                if (locationRiskFactor > 5)
+                if (parametersTerremoto.locationRiskFactor > 5)
                     probability = 0.9;
                 else
                     probability = 0.7;
 
-                if (isEarthquakeSeason)
+                if (parametersTerremoto.isEarthquakeSeason)
                     probability *= 1.0;
             }
-            else if (currentEarthquakeCount >= 3)
+            else if (parametersTerremoto.currentEarthquakeCount >= 3)
             {
                 probability = 1.0;
             }
@@ -92,4 +101,6 @@ namespace NetCoreCourse.CleanCodeDesignPatterns.Services
             return japanServiceAdapter.ProbabilidadTerremoto();
         }
     }
+
+    public record ParametersTerremoto(int currentEarthquakeCount, int locationRiskFactor, bool isEarthquakeSeason, string city);
 }

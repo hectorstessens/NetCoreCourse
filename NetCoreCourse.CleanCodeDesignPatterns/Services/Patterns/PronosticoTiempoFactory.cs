@@ -19,7 +19,8 @@ namespace NetCoreCourse.CleanCodeDesignPatterns.Services.Patterns
         private readonly Dictionary<string, Type> factories = new Dictionary<string, Type>
         {
             ["BuenosAires"] = typeof(TiempoBuenosAires),
-            ["Rosario"] = typeof(TiempoRosario)
+            ["Rosario"] = typeof(TiempoRosario),
+            ["Tokio"] = typeof(TiempoTokio)
         };
 
         public async Task<ITiempo> Create(string cityName)

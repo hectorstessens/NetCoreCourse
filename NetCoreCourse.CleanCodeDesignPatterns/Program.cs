@@ -25,6 +25,8 @@ builder.Services.AddTransient<ITsunamiProbabilityCalculatorBuilder, TsunamiProba
 
 builder.Services.AddTransient(m => new TiempoBuenosAires());
 builder.Services.AddTransient(m => new TiempoRosario());
+builder.Services.AddTransient(m => new TiempoTokio());
+
 
 var app = builder.Build();
 

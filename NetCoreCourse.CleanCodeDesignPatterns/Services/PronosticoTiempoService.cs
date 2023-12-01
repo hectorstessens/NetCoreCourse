@@ -16,22 +16,15 @@ namespace NetCoreCourse.CleanCodeDesignPatterns.Services
         {
             this.pronosticoTiempoFactory = pronosticoTiempoFactory;
         }
+
         public async Task<PronosticoTiempo> GetPronosticoTiempoFactory(string city)
         {
-            // Extract Try/Catch Blocks​
-            try
-            {
                 var pronosticoTiempo = await pronosticoTiempoFactory.Create(city);
 
-                var decorator = new TemperaturaDecorator(pronosticoTiempo);
-                return decorator.Get();
+                //var decorator = new TemperaturaDecorator(pronosticoTiempo);
+                //return decorator.Get();
 
-                //return pronosticoTiempo.Get();
-            }
-            catch
-            {
-                return new PronosticoTiempo();
-            }
+                return pronosticoTiempo.Get();
         }
     }
 }

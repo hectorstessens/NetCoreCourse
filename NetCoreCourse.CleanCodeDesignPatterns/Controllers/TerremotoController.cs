@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
+using NetCoreCourse.CleanCodeDesignPatterns.Domain;
 using NetCoreCourse.CleanCodeDesignPatterns.Services;
 
 namespace NetCoreCourse.CleanCodeDesignPatterns.Controllers
@@ -16,14 +17,20 @@ namespace NetCoreCourse.CleanCodeDesignPatterns.Controllers
 
         [HttpGet]
         //Use Intention-Revealing Names
-        public async Task<double> GetCosas([FromQuery] string cityName)
+        public async Task<double> ObtenerTemperaturaPorCiudad([FromQuery] string cityName)
         {
-            return terremotoService.ObtenerEsoQueNecesito(cityName);
+            return terremotoService.ObtenerTemperaturaPorCiudad(cityName);
         }
-
+        /// <summary>
+        /// Este metodo devuelve la probabilidad de un terremoto en japon
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("ProbabilidadTerromotoJapon")]
         public async Task<double> GetProbabilidadTerromotoJapon() 
         {
+
+            Pais pais = Pais.CrearPais("Francia");
+
             return terremotoService.GetProbabilidadTerromotoJapon();
         }
     }
