@@ -9,15 +9,19 @@ namespace NetCoreCourse.CleanCodeDesignPatterns.Controllers
     public class PronosticoTiempoController : ControllerBase
     {
         private readonly IPronosticoTiempoService pronosticoTiempoService;
+        private readonly ITransitoService transitoService;
+        private readonly ICalculoHumedadService calculoHumedadService;
 
-        public PronosticoTiempoController(IPronosticoTiempoService pronosticoTiempoService)
+        public PronosticoTiempoController(IPronosticoTiempoService pronosticoTiempoService, ITransitoService transitoService, ICalculoHumedadService calculoHumedadService)
         {
             this.pronosticoTiempoService = pronosticoTiempoService;
+            this.transitoService = transitoService;
+            this.calculoHumedadService = calculoHumedadService;
         }
 
         private static readonly string[] Summaries = new[]
         {
-        "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
+            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };
 
 
@@ -37,6 +41,18 @@ namespace NetCoreCourse.CleanCodeDesignPatterns.Controllers
         public async Task<PronosticoTiempo> GetByCity([FromQuery] string cityName)
         {
             return await pronosticoTiempoService.GetPronosticoTiempoFactory(cityName);
+        }
+
+        [HttpGet("GetTransito")]
+        public async Task<string> GetTransito()
+        {
+            return transitoService.MostrarMensajeDeCirculacion();
+        }
+
+        [HttpGet("GetHumedad")]
+        public async Task<string> GetHumedad()
+        {
+            return calculoHumedadService.GetHumedad();
         }
     }
 }
