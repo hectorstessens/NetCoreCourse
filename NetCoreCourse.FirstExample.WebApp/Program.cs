@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Http.Json;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using NetCoreCourse.FirstExample.WebApp.Configuration;
 using NetCoreCourse.FirstExample.WebApp.Controllers;
@@ -24,6 +25,7 @@ builder.Services.AddControllers(options => {
     x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
     x.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
 });
+
 
 //Modulo API
 builder.Services.AddSwaggerGen();
@@ -78,8 +80,16 @@ builder.Services.AddDbContext<ThingsContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("ThingsContextConnection"));
 });
 
+builder.Services.AddLogging(loggingBuilder =>
+{
+    loggingBuilder.AddFile("logs/CursoNetlog-{Date}.txt");
+});
+
 //Creando la aplicacion.
 var app = builder.Build();
+
+
+
 
 // Configurando el "pipeline" para las peticiones "HTTP". MIDDLEWARES.
 if (!app.Environment.IsDevelopment())

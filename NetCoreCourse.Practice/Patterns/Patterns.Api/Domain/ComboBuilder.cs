@@ -19,7 +19,6 @@ namespace Patterns.Api.Domain
             return this;
         }
 
-
         public ComboBuilder AddPepino()
         {
             sb.Append("Pepino");
@@ -58,6 +57,13 @@ namespace Patterns.Api.Domain
         public ComboBuilder AddTomate()
         {
             sb.Append("Tomate");
+            sb.AppendLine();
+            return this;
+        }
+
+        public ComboBuilder AddPan()
+        {
+            sb.Append("Pan");
             sb.AppendLine();
             return this;
         }

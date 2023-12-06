@@ -18,7 +18,8 @@
         {
             [1] = typeof(Combo1),
             [2] = typeof(Combo2),
-            [3] = typeof(Combo3)
+            [3] = typeof(Combo3),
+            [4] = typeof(Combo4)
         };
 
         public async Task<ICombo> Create(int combo)

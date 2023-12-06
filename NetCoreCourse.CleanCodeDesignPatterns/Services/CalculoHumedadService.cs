@@ -14,11 +14,11 @@ namespace NetCoreCourse.CleanCodeDesignPatterns.Services
         {
             StringBuilder stringBuilder = new StringBuilder();
             var calculadoraHumedad = new CalculadoraHumedad();
-
+            calculadoraHumedad.CambiarEstrategia("Baja");
             // Calcular sensación de humedad con la estrategia de humedad baja
             var resultadoHumedadBaja = calculadoraHumedad.CalcularHumedadParaHumedadRelativa(25);
             stringBuilder.Append($"Resultado (Baja): {resultadoHumedadBaja}");
-
+            stringBuilder.AppendLine();
             // Cambiar a la estrategia de humedad moderada
             calculadoraHumedad.CambiarEstrategia("Moderada");
 

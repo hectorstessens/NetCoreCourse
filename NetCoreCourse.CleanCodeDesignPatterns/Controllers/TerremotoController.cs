@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+
+using Microsoft.AspNetCore.Mvc;
 
 using NetCoreCourse.CleanCodeDesignPatterns.Domain;
 using NetCoreCourse.CleanCodeDesignPatterns.Services;
@@ -10,7 +12,7 @@ namespace NetCoreCourse.CleanCodeDesignPatterns.Controllers
     public class TerremotoController: ControllerBase
     {
         private readonly ITerremotoService terremotoService;
-        public TerremotoController(ITerremotoService terremotoService) 
+        public TerremotoController(IMapper mapper, ITerremotoService terremotoService) 
         {
             this.terremotoService = terremotoService;
         }

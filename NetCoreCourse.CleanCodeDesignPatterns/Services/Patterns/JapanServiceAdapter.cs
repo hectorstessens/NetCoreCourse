@@ -10,13 +10,20 @@ namespace NetCoreCourse.CleanCodeDesignPatterns.Services.Patterns
     {
         public double ProbabilidadTerremoto()
         {
-            JapanWeatherClient.Login();
+            try
+            {
+                JapanWeatherClient.Login();
+                JapanWeatherClient.SetConfiguration();
+                JapanWeatherClient.SetParameters();
 
-            JapanWeatherClient.SetParameters();
-
-            JapanWeatherClient.SetConfiguration();
-            double probability = JapanWeatherClient.GetProbability();
-            return probability;
+                double probability = JapanWeatherClient.GetProbability();
+                return probability;
+            }
+            catch
+            {
+                throw new Exception("Servicio no disponible");
+            }
+      
         }
     }
 }
