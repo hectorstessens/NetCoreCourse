@@ -1,17 +1,13 @@
 // No tenemos una clase. Como es posible? Utilicemos un decompilador.
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Http.Json;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using NetCoreCourse.FirstExample.WebApp.Configuration;
-using NetCoreCourse.FirstExample.WebApp.Controllers;
 using NetCoreCourse.FirstExample.WebApp.DataAccess;
 using NetCoreCourse.FirstExample.WebApp.Dto;
 using NetCoreCourse.FirstExample.WebApp.Filters;
 using NetCoreCourse.FirstExample.WebApp.Handlers;
 using NetCoreCourse.FirstExample.WebApp.Services;
-using System.Security.Cryptography.Xml;
 using System.Text;
 using System.Text.Json.Serialization;
 
