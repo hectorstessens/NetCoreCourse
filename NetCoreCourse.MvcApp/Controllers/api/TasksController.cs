@@ -52,7 +52,7 @@ namespace NetCoreCourse.MvcApp.Controllers.api
         {
             Task tarea = Task.Run(() => {
                 Debug.WriteLine("Comenzo");
-                Thread.Sleep(5000);
+                Thread.Sleep(1);
                 Debug.WriteLine("Finalizo");
             });
             var primerEstado = tarea.Status.ToString();
@@ -85,11 +85,13 @@ namespace NetCoreCourse.MvcApp.Controllers.api
         {
             
             Task.Run(() => {
-                Debug.WriteLine("Tarea 1");
                 Thread.Sleep(1500);
+                Debug.WriteLine("Tarea 1");
             }).ContinueWith((anterior) => {
+                Thread.Sleep(2000);
                 Debug.WriteLine("Tarea 2");
             }).ContinueWith((segunda) => {
+                Thread.Sleep(3000);
                 Debug.WriteLine("Tarea 3");
             });
 
@@ -153,9 +155,21 @@ namespace NetCoreCourse.MvcApp.Controllers.api
         [HttpGet("httpClient")]
         public async Task<IActionResult> HttpClient()
         {
-            //A donde deberia estar esta URL?
-            var categories = await client.GetStringAsync("https://localhost:7232/api/webapi/categories"); //Llamando a nuestro otro proyecto? Interesante! 
-            return Ok(categories); 
+            var start = DateTime.Now;
+            //var categories = await client.GetStringAsync("https://dummy.restapiexample.com/api/v1/employees"); //Llamando a nuestro otro proyecto? Interesante! 
+            //var users = await client.GetStringAsync("https://reqres.in/api/users?page=2"); //Llamando a nuestro otro proyecto? Interesante!
+
+            //double differenceInMilliseconds = (DateTime.Now - start).TotalMilliseconds;
+            //return Ok(categories + users + "- Diferencia milisegundos " + differenceInMilliseconds.ToString());
+
+            Task<string> task1 = client.GetStringAsync("https://dummy.restapiexample.com/api/v1/employees");
+            Task<string> task2 = client.GetStringAsync("https://reqres.in/api/users?page=2");
+
+            await Task.WhenAll(task1, task2);
+            double differenceInMilliseconds = (DateTime.Now - start).TotalMilliseconds;
+            return Ok(task1.Result + task2.Result + "- Diferencia milisegundos " + differenceInMilliseconds.ToString());
+
+
         }
 
     }

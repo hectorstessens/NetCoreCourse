@@ -6,6 +6,8 @@ option csharp_namespace = "NetCoreCourse.MvcApp.Protos"; //Namespace donde se cr
 service ProtoAlumnoService {
   rpc GetById(CourseRequest) returns (AlumnoResponse);
   rpc GetAll(google.protobuf.Empty) returns (AlumnosResponse); //Metodo que no recibe ningun parametro en el request.
+  rpc GetAllNotJuan(google.protobuf.Empty) returns (AlumnosResponse); //Metodo que no recibe ningun parametro en el request.
+
 }
 
 message CourseRequest{

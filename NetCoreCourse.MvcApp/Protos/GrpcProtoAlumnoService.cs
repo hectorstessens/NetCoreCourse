@@ -1,5 +1,7 @@
 ﻿using Google.Protobuf.WellKnownTypes;
+
 using Grpc.Core;
+
 using NetCoreCourse.MvcApp.Services;
 
 namespace NetCoreCourse.MvcApp.Protos
@@ -50,6 +52,25 @@ namespace NetCoreCourse.MvcApp.Protos
                     Id = a.Id,
                     Name = a.Nombre
                 });
+            });
+
+            return response;
+        }
+
+        public override async Task<AlumnosResponse> GetAllNotJuan(Empty request, ServerCallContext context)
+        {
+            var alumnos = await alumnosService.GetAllAsync();
+            var response = new AlumnosResponse { Success = true };
+            alumnos.ForEach(a =>
+            {
+                if (a.Nombre != "Juan")
+                {
+                    response.Alumnos.Add(new AlumnoGrpc
+                    {
+                        Id = a.Id,
+                        Name = a.Nombre
+                    });
+                }
             });
 
             return response;
